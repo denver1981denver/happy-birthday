@@ -1,6 +1,7 @@
 @font-face {
   font-family: "Bad Script";
   font-weight: 400;
+  font-display: swap;
   src: url("../fonts/bad-script-v16-latin_cyrillic-regular.woff2")
       format("woff2"),
     url("../fonts/bad-script-v16-latin_cyrillic-regular.woff") format("woff");
@@ -9,6 +10,7 @@
 @font-face {
   font-family: "Open Sans";
   font-weight: 400;
+  font-display: swap;
   src: url("../fonts/open-sans-v29-latin_cyrillic-regular.woff2")
       format("woff2"),
     url("../fonts/open-sans-v29-latin_cyrillic-regular.woff") format("woff");
@@ -17,6 +19,7 @@
 @font-face {
   font-family: "Open Sans";
   font-weight: 700;
+  font-display: swap;
   src: url("../fonts/open-sans-v29-latin_cyrillic-700.woff2") format("woff2"),
     url("../fonts/open-sans-v29-latin_cyrillic-700.woff") format("woff");
 }
@@ -35,17 +38,33 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  margin-bottom: 17px;
+}
+
+.woman {
+  background-color: #fff1f8;
+}
+
+.men {
+  background-color: #EFF9FE;
 }
 
 button {
   cursor: pointer;
 }
 
-img,
-svg {
+img {
   max-width: 100%;
   height: auto;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 .container {
@@ -66,13 +85,14 @@ svg {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 30px;
 }
 
 .header__button-change {
   border: none;
   width: 300px;
   height: 65px;
-  background: #c300c7;
+  background-color: #c300c7;
   border-radius: 30px;
   color: #fff;
   font-weight: 700;
@@ -82,6 +102,10 @@ svg {
 
 .header__button-change:last-child {
   margin-right: 0;
+}
+
+.men .header__button-change {
+  background-color: #1178b2;
 }
 
 .header__button-gender {
@@ -109,9 +133,17 @@ svg {
   background-image: url("../img/women.svg");
 }
 
+.men .header__button-gender--men {
+  border-color: #1178b2;
+}
+
+.women .header__button-gender--women {
+  border-color: #c300c7;
+}
+
 .card {
   flex-grow: 1;
-  padding: 32px 0;
+  padding: 32px 0 15px;
   display: flex;
   align-items: center;
 }
@@ -132,10 +164,21 @@ svg {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-family: "Bad Script";
-  /* font-style: italic; */
   font-size: max(3em, min(calc(100vw *3 / 140), 6em));
   line-height: 1.6;
+}
+
+.women .card__text {
+  font-family: "Bad Script";
+}
+
+.men .card__text {
+  font-family: "Open Sans";
+  font-weight: 700;
+}
+
+.footer {
+  padding: 17px 0;
 }
 .footer__container {
   display: flex;
@@ -143,17 +186,22 @@ svg {
   align-items: center;
 }
 
-.footer__link-social {
-  margin-right: 16px;
+.footer__social {
+  display: flex;
+  gap: 16px;
 }
 
-.footer__link-social:last-child {
-  margin-right: 0px;
+.footer__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-span {
-  font-size: 14px;
-  line-height: 19px;
+.women .vk,
+.women .telegram,
+.women .social-3,
+.women .social-4 {
+  fill:#c300c7;
 }
 
 @media (max-width: 880px) {
@@ -179,6 +227,16 @@ span {
     height: 40px;
     background-size: 30px;
     margin-right: 0;
+  }
+}
 
+@media (max-width: 480px) {
+  .footer__container {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer__contacts {
+    order: 1;
   }
 }
