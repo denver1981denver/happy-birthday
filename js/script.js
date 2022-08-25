@@ -74,3 +74,19 @@ buttonText.addEventListener('click', changeText);
 buttonImage.addEventListener('click', changeImage);
 getDataToCard();
 
+const cardWrapper = document.querySelector('.card__wrapper');
+
+cardWrapper.addEventListener('dblclick', () => {
+	const newWindow = window.open(
+		'',
+		'',
+		`width=840,height=520,
+		top=${(screen.height / 2) - 520 / 2},
+		left=${(screen.height / 2) - 840 / 2}`)
+	html2canvas(cardWrapper).then(canvas => {
+		canvas.style.maxWidth = '100%';
+		canvas.style.height = 'auto';
+		newWindow.document.body.append(canvas)
+	})
+});
+
